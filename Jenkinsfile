@@ -10,10 +10,10 @@ node {
         sh "${mvnHome}/bin/mvn -B clean package"
     }
     stage('deploy') {
-        sh "docker stop my || true"
-        sh "docker rm my || true"
-        sh "docker run --name my -p 11111:8080 -d tomcat"
-        sh "docker cp target/MavenDemo.war my:/home/cylong/Tomcat/webapps"
+        sh "docker stop cylong|| true"
+        sh "docker rm cylong || true"
+        sh "docker run --name cylong -p 11111:8080 -d tomcat"
+        sh "docker cp target/MavenDemo.war cylong:/home/cylong/Tomcat/webapps"
     }
     stage('results') {
         archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
