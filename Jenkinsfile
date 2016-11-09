@@ -13,7 +13,7 @@ node {
         sh "docker stop cylong|| true"
         sh "docker rm cylong || true"
         sh "docker run --name cylong -p 11111:8080 -d tomcat"
-        sh "docker cp target/DemoArtifact-0.0.1-SNAPSHOT.jar cylong:/usr/local/tomcat/webapps/DemoArtifact"
+        sh "docker cp target/DemoArtifact.war cylong:/usr/local/tomcat/webapps"
     }
     stage('results') {
         archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
