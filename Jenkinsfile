@@ -12,7 +12,7 @@ node {
     stage('deploy') {
         sh "docker stop cylong|| true"
         sh "docker rm cylong || true"
-        sh "docker run --name cylong -p 11111:8080 -d tomcat"
+        sh "docker run --name cylong -p 11111:8080 -d tomcat:jre8"
         sh "docker cp target/DemoArtifact.war cylong:/usr/local/tomcat/webapps"
     }
     stage('results') {
