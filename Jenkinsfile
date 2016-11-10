@@ -12,8 +12,8 @@ node {
     stage('deploy') {
         sh "docker stop cylong|| true"
         sh "docker rm cylong || true"
-        sh "docker run --name cylong -p 11111:8080 -d tomcat:jre8"
-        sh "docker cp target/DemoArtifact.war cylong:/usr/local/tomcat/webapps"
+        sh "docker run --name cylong -p 11111:8080 -d dordoka/tomcat"
+        sh "docker cp target/DemoArtifact.war cylong:/opt/tomcat/webapps"
     }
     stage('results') {
         archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
